@@ -32,7 +32,6 @@ public class TrainDto {
     private String status;
 
 
-
     public TrainDto(Long trainId, String trainName, boolean departMon,
                     boolean departTue, boolean departWed, boolean departThu,
                     boolean departFri, boolean departSat, boolean departSun,

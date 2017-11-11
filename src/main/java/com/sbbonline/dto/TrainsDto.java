@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Singleton
-public class TrainsDto  implements Serializable {
+public class TrainsDto implements Serializable {
 
     private List<TrainDto> trains;
 

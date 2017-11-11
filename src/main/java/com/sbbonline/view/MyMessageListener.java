@@ -22,7 +22,7 @@ public class MyMessageListener implements MessageListener, Serializable {
     private Receiver receiver;
 
     public MyMessageListener(Receiver receiver) {
-        this.receiver=receiver;
+        this.receiver = receiver;
         log.info("Listener receiver created");
     }
 
@@ -31,7 +31,7 @@ public class MyMessageListener implements MessageListener, Serializable {
     }
 
     @Override
-    public void onMessage(Message message)  {
+    public void onMessage(Message message) {
         log.info("Message received");
         receiver.getTimetable("Geneva%20Airport"); //from JMS server
     }

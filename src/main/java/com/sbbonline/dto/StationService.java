@@ -12,7 +12,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@ManagedBean(name="stationService", eager = true)
+@ManagedBean(name = "stationService", eager = true)
 @ApplicationScoped
 public class StationService {
 
@@ -26,15 +26,14 @@ public class StationService {
         stationsDto = receiver.getStationsDto();
     }
 
-    public StationDto getStationDtoById(Long id){
+    StationDto getStationDtoById(Long id) {
         for (StationDto stationDto :
                 stationsDto) {
-            if (stationDto.getStationId()==id)
+            if (stationDto.getStationId().equals(id))
                 return stationDto;
         }
         return null;
     }
-
 
 
 }

@@ -11,25 +11,23 @@ import javax.faces.convert.FacesConverter;
 public class StationConverter implements Converter {
 
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
-        if(value != null && value.trim().length() > 0) {
+        if (value != null && value.trim().length() > 0) {
             try {
                 StationService stationService = (StationService) fc.getExternalContext().getApplicationMap().get("stationService");
                 Object o = stationService.getStationDtoById(Long.parseLong(value));
                 return o;
-            } catch(NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid theme."));
             }
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     public String getAsString(FacesContext fc, UIComponent uic, Object object) {
-        if(object != null) {
+        if (object != null) {
             return String.valueOf(((StationDto) object).getStationId());
-        }
-        else {
+        } else {
             return "";
         }
     }

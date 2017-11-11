@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:o="http://omnifaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
 <h:head></h:head>
 <body>
 
-<h:graphicImage value="resources/logo.png" />
+<h:graphicImage value="resources/logo.png"/>
 
 <p:layout id="toplayout" style="min-width:600px;min-height:300px;">
     <p:layoutUnit id="westLayout" position="west" resizable="false" size="400" minSize="400" maxSize="500">
         <h:form id="station">
-            <p:messages autoUpdate="true" />
+            <p:messages autoUpdate="true"/>
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                <p:outputLabel for="advanced" value="Choose station:"  />
-                <p:selectOneMenu id="advanced" value="#{selectOneStationDto.stationDto}" converter="stationConverter" panelStyle="width:240px"
+                <p:outputLabel for="advanced" value="Choose station:"/>
+                <p:selectOneMenu id="advanced" value="#{selectOneStationDto.stationDto}" converter="stationConverter"
+                                 panelStyle="width:240px"
                                  effect="fade" var="t" style="width:220px" filter="true" filterMatchMode="startsWith">
-                    <f:selectItems value="#{selectOneStationDto.stationsDto}" var="stationDto" itemLabel="#{stationDto.stationName}" itemValue="#{stationDto}" />
+                    <f:selectItems value="#{selectOneStationDto.stationsDto}" var="stationDto"
+                                   itemLabel="#{stationDto.stationName}" itemValue="#{stationDto}"/>
 
                     <p:column style="width:10%">
-                        <h:outputText styleClass="ui-theme ui-theme-#{t.cantonName}" />
+                        <h:outputText styleClass="ui-theme ui-theme-#{t.cantonName}"/>
                     </p:column>
                     <p:column style="width:10%">
-                        <h:outputText styleClass="ui-theme ui-theme-#{t.stationName}" />
+                        <h:outputText styleClass="ui-theme ui-theme-#{t.stationName}"/>
                     </p:column>
 
                     <p:column>
-                        <h:outputText value="#{t.stationName}" />
+                        <h:outputText value="#{t.stationName}"/>
                     </p:column>
-                    <p:ajax event="change" listener="#{selectOneStationDto.handleEvent}"  update="myTable"/>
+                    <p:ajax event="change" listener="#{selectOneStationDto.handleEvent}" update="myTable"/>
                 </p:selectOneMenu>
             </h:panelGrid>
-            <p:growl id="msgs2" showDetail="true" />
-            <p:remoteCommand name="rc" update="msgs2" actionListener="#{remoteCommandView.execute}"/>
-            <h:outputText id="display" value="#{selectOneStationDto.stationDto.stationName}" />
+            <p:growl id="msgs2" showDetail="true"/>
+            <h:outputText id="display" value="#{selectOneStationDto.stationDto.stationName}"/>
         </h:form>
     </p:layoutUnit>
 
@@ -46,23 +45,23 @@
         </h:form>
         <p:dataTable id="myTable" var="train" value="#{SbbListener.trainsDto.trains}">
             <p:column headerText="Train number">
-                <h:outputText value="#{train.trainId}" />
+                <h:outputText value="#{train.trainId}"/>
             </p:column>
 
             <p:column headerText="Route">
-                <h:outputText value="#{train.initStation} - #{train.lastStation}" />
+                <h:outputText value="#{train.initStation} - #{train.lastStation}"/>
             </p:column>
 
             <p:column headerText="Arrival">
-                <h:outputText value="#{train.arrivalTime}" />
+                <h:outputText value="#{train.arrivalTime}"/>
             </p:column>
 
             <p:column headerText="Departure">
-                <h:outputText value="#{train.departureTime}" />
+                <h:outputText value="#{train.departureTime}"/>
             </p:column>
 
             <p:column headerText="Status">
-                <h:outputText value="#{train.status}" />
+                <h:outputText value="#{train.status}"/>
             </p:column>
         </p:dataTable>
 
