@@ -25,7 +25,7 @@ public class StationDto implements Serializable {
     private String stationName;
     private String cantonName;
 
-    public StationDto(){
+    public StationDto() {
 
     }
 

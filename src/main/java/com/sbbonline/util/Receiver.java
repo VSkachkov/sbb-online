@@ -37,9 +37,6 @@ public class Receiver {
     @EJB
     private TrainsDto trainsDto;
 
-
-
-
     @EJB
     private TrainDto trainDto;
 
@@ -60,21 +57,16 @@ public class Receiver {
             Context context = new InitialContext(props);
             QueueConnectionFactory connectionFactory = (QueueConnectionFactory) context.lookup("queueCF");
             Queue queue = (Queue) context.lookup("js-queue");
-
             connection = connectionFactory.createQueueConnection();
             connection.start();
-
             session = connection.createQueueSession(false, QueueSession.AUTO_ACKNOWLEDGE);
-
             receiver = session.createReceiver(queue);
-
             receiver.setMessageListener(new MyMessageListener(this));
         } catch (NamingException e) {
             log.error(e.toString());
         } catch (JMSException e) {
             log.error(e.toString());
         }
-
         getTimetable("Geneva%20Airport");
     }
 
@@ -83,18 +75,18 @@ public class Receiver {
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 
         Client client = Client.create(clientConfig);
-        WebResource webResource = client.resource("http://localhost:8082/board/"+stationName);
+        WebResource webResource = client.resource("http://localhost:8082/board/" + stationName);
         ClientResponse response = webResource
                 .accept(MediaType.APPLICATION_JSON)
                 .type(MediaType.APPLICATION_JSON)
                 .get(ClientResponse.class);
 
-        TrainDto [] res = response.getEntity(TrainDto[].class);
-        List<TrainDto> trainsDtoList = new ArrayList<TrainDto>(Arrays.asList(res));
+        TrainDto[] res = response.getEntity(TrainDto[].class);
+        List<TrainDto> trainsDtoList = new ArrayList<>(Arrays.asList(res));
         trainsDto.setTrains(trainsDtoList);
     }
 
-    public List <StationDto> getStationsDto() {
+    public List<StationDto> getStationsDto() {
         ClientConfig clientConfig = new DefaultClientConfig();
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
 
@@ -106,7 +98,7 @@ public class Receiver {
                 .get(ClientResponse.class);
 
         StationDto[] res = response.getEntity(StationDto[].class);
-        List<StationDto> stationsDto = new ArrayList<StationDto>(Arrays.asList(res));
+        List<StationDto> stationsDto = new ArrayList<>(Arrays.asList(res));
         return stationsDto;
     }
 
@@ -129,7 +121,7 @@ public class Receiver {
     }
 
     public void setTrainsDto(TrainsDto trainsDto) {
-        this.trainsDto= trainsDto;
+        this.trainsDto = trainsDto;
     }
 
     public TrainDto getTrainDto() {
@@ -137,7 +129,7 @@ public class Receiver {
     }
 
     public void setTrainDto(TrainDto trainDto) {
-        this.trainDto= trainDto;
+        this.trainDto = trainDto;
     }
 
 }
