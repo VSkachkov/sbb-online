@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>maven-web</groupId>
+  <artifactId>sbb-online</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>board-online Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+    <properties>
+        <jboss.home>D:\DISTR\wildfly-10.1.0.Final</jboss.home>
+    </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+  <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>7.0</version>
+  </dependency>
+
+      <!--<dependency>-->
+          <!--<groupId>javax.faces</groupId>-->
+          <!--<artifactId>javax.faces-api</artifactId>-->
+          <!--<version>2.3-pfd</version>-->
+          <!--<scope>provided</scope>-->
+      <!--</dependency>-->
+
+      <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-client</artifactId>
+          <version>1.19.4</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-json</artifactId>
+          <version>1.19.4</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.activemq</groupId>
+          <artifactId>activemq-core</artifactId>
+          <version>5.7.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.16.4</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version>1.2.17</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.richfaces</groupId>
+          <artifactId>richfaces-a4j</artifactId>
+          <version>4.5.17.Final</version>
+      </dependency>
+
+      <!--<dependency>-->
+          <!--<groupId>org.jboss.spec.javax.faces</groupId>-->
+          <!--<artifactId>jboss-jsf-api_2.2_spec</artifactId>-->
+          <!--<version>2.2.13</version>-->
+      <!--</dependency>-->
+
+      <dependency>
+          <groupId>org.primefaces</groupId>
+          <artifactId>primefaces</artifactId>
+          <version>5.3</version>
+      </dependency>
+
+
+      <dependency>
+          <groupId>org.primefaces.extensions</groupId>
+          <artifactId>all-themes</artifactId>
+          <version>1.0.8</version>
+          <type>pom</type>
+      </dependency>
+
+      <dependency>
+          <groupId>org.omnifaces</groupId>
+          <artifactId>omnifaces</artifactId>
+          <version>2.3</version>
+      </dependency>
+      <!--<dependency>-->
+          <!--<groupId>dom4j</groupId>-->
+          <!--<artifactId>dom4j</artifactId>-->
+          <!--<version>1.6.1</version>-->
+          <!--<scope>provided</scope>-->
+      <!--</dependency>-->
+  </dependencies>
+
+    <build>
+    <finalName>sbb-online</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+              </configuration>
+          </plugin>
+          <!--<plugin>-->
+              <!--<groupId>org.apache.maven.plugins</groupId>-->
+              <!--<artifactId>maven-war-plugin</artifactId>-->
+              <!--<configuration>-->
+                  <!--<warSourceDirectory>src/main/webapp</warSourceDirectory>-->
+                  <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
+              <!--</configuration>-->
+          <!--</plugin>-->
+          <plugin>
+              <groupId>org.wildfly.plugins</groupId>
+              <artifactId>wildfly-maven-plugin</artifactId>
+              <version>1.0.2.Final</version>
+          </plugin>
+      </plugins>
+  </build>
+</project>
