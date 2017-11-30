@@ -21,9 +21,9 @@
                     <f:selectItems value="#{selectOneStationDto.stationsDto}" var="stationDto"
                                    itemLabel="#{stationDto.stationName}" itemValue="#{stationDto}"/>
 
-                    <p:column style="width:10%">
-                        <h:outputText styleClass="ui-theme ui-theme-#{t.cantonName}"/>
-                    </p:column>
+                    <!--<p:column style="width:10%">-->
+                        <!--<h:outputText styleClass="ui-theme ui-theme-#{t.cantonName}"/>-->
+                    <!--</p:column>-->
                     <p:column style="width:10%">
                         <h:outputText styleClass="ui-theme ui-theme-#{t.stationName}"/>
                     </p:column>
@@ -35,7 +35,8 @@
                 </p:selectOneMenu>
             </h:panelGrid>
             <p:growl id="msgs2" showDetail="true"/>
-            <h:outputText id="display" value="#{selectOneStationDto.stationDto.stationName}"/>
+            <!--<h:outputText id="display" value="#{selectOneStationDto.stationDto.stationName}"/>-->
+            <h:outputText id="display" value="#{selectOneStationDto.stationDto.stationId}"/>
         </h:form>
     </p:layoutUnit>
 

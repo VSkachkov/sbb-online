@@ -67,7 +67,8 @@ public class Receiver {
         } catch (JMSException e) {
             log.error(e.toString());
         }
-        getTimetable("Geneva%20Airport");
+//        getTimetable("Geneva%20Airport");
+        getTimetableById(1L);
     }
 
     public void getTimetable(String stationName) {
@@ -85,6 +86,23 @@ public class Receiver {
         List<TrainDto> trainsDtoList = new ArrayList<>(Arrays.asList(res));
         trainsDto.setTrains(trainsDtoList);
     }
+
+    public void getTimetableById(Long stationId) {
+        ClientConfig clientConfig = new DefaultClientConfig();
+        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+
+        Client client = Client.create(clientConfig);
+        WebResource webResource = client.resource("http://localhost:8082/boardById/" + stationId);
+        ClientResponse response = webResource
+                .accept(MediaType.APPLICATION_JSON)
+                .type(MediaType.APPLICATION_JSON)
+                .get(ClientResponse.class);
+
+        TrainDto[] res = response.getEntity(TrainDto[].class);
+        List<TrainDto> trainsDtoList = new ArrayList<>(Arrays.asList(res));
+        trainsDto.setTrains(trainsDtoList);
+    }
+
 
     public List<StationDto> getStationsDto() {
         ClientConfig clientConfig = new DefaultClientConfig();

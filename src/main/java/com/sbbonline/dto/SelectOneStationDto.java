@@ -31,7 +31,7 @@ public class SelectOneStationDto {
         stationsDto = stationService.getStationsDto();
     }
 
-    public void handleEvent() {
-        receiver.getTimetable(stationDto.getStationName());
-    }
+public void handleEvent() {
+    receiver.getTimetableById(stationDto.getStationId());
+}
 }

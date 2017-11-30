@@ -26,6 +26,7 @@ public class TrainDto {
     private Time departureTime;
     private Time arrivalTime;
     private Long trainTypeNumber;
+    private String trainTypeName;
     public Long trainType;
     public Long trainTypeDtos;
     public Long carriage;

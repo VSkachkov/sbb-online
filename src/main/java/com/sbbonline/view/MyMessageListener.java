@@ -33,7 +33,8 @@ public class MyMessageListener implements MessageListener, Serializable {
     @Override
     public void onMessage(Message message) {
         log.info("Message received");
-        receiver.getTimetable("Geneva%20Airport"); //from JMS server
+//        receiver.getTimetable("Geneva%20Airport"); //from JMS server
+        receiver.getTimetableById(1L); //from JMS server
     }
 
     public TrainsDto getTrainsDto() {
